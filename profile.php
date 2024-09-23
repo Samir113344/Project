@@ -1,0 +1,55 @@
+<html>
+<head>
+    <link rel="stylesheet" href="profile1.css">
+</head>
+<body>
+    <div class="home">
+        <div class="navbar">
+            <img src="logo.png" class="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="aimg.php">Image</a></li>
+                <li><a href="photog.php">Photographer</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+  <div class="profile-header">
+    <div class="profile-picture">
+      <img src="pro1.jpg" alt="Profile Picture">
+    </div>
+    <div class="profile-info">
+      <h1>Images :</h1>
+    </div>
+    <div class="about">
+      <h2>Name :</h2>
+      <h2>Email:</h2>
+      <h2>Contact:</h2>
+
+    </div>
+  </div>
+  
+  <div class="post-grid">
+    <div class="post">
+      <img src="img1.jpg" alt="Post 1">
+    </div>
+    <div class="post">
+      <img src="img2.jpg" alt="Post 2">
+    </div>
+    <div class="post">
+      <img src="img3.jpg" alt="Post 3">
+    </div>
+    <div class="post">
+      <img src="img4.jpg" alt="Post 3">
+    </div>
+    <div class="post">
+      <img src="img5.jpg" alt="Post 3">
+    </div>
+    <div class="post">
+      <img src="img6.jpg" alt="Post 3">
+    </div>
+  </div>
+</body>
+</html>

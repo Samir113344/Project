@@ -1,0 +1,206 @@
+<html>
+<head>
+    <link rel="stylesheet" href="profile2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/css/bootstrap.min.css">
+    <script>
+              function validateFile() {
+            var fileInput = document.getElementById('image');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Please upload only images with the following extensions: .jpg, .jpeg, .png, .gif');
+                fileInput.value = '';
+                console.log('Validation function executed');
+                return false;
+            }
+
+            var nameInput = document.getElementsByName('name')[0];
+            var nameValue = nameInput.value.trim();
+
+            if (nameValue === '') {
+                alert('Name cannot be empty');
+                nameInput.value = '';
+                nameInput.focus();
+                return false;
+            }
+            var rateInput = document.getElementsByName('rate')[0];
+        var rateValue = rateInput.value.trim();
+
+        if (rateValue === '') {
+            alert('Rate cannot be empty');
+            rateInput.value = '';
+            rateInput.focus();
+            return false;
+        }
+        }
+        function validate   () {
+            var fileInput = document.getElementById('profilepic');
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                alert('Please upload only images with the following extensions: .jpg, .jpeg, .png, .gif');
+                fileInput.value = '';
+                console.log('Validation function executed');
+                return false;
+            }
+            
+            var nameInput = document.getElementsByName('name')[0];
+            var nameValue = nameInput.value.trim();
+
+            if (nameValue === '') {
+                alert('Name cannot be empty');
+                nameInput.value = '';
+                nameInput.focus();
+                return false;
+            }
+            var rateInput = document.getElementsByName('rate')[0];
+        var rateValue = rateInput.value.trim();
+
+        if (rateValue === '') {
+            alert('Rate cannot be empty');
+            rateInput.value = '';
+            rateInput.focus();
+            return false;
+        }
+        }
+  
+    </script>
+      
+</head>
+<body>  
+<div class="view">
+        <div class="profile">
+<div class="dropdown">
+                <img src="U.png" class="dropdown-img" id="dropdownMenuButton" style="height: 40px; width: 40px;position: relative;
+                transform: translate(-65px, 60px)">
+                <?php
+                session_start();
+                $conn = mysqli_connect("localhost", "root", "", "Project");
+                
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+                
+                if (isset($_SESSION['username'])) {
+                    $Username = $_SESSION['username'];
+                } else {
+                    $Username = "";
+                }
+                
+                $sel = "SELECT * FROM PG WHERE Username = '$Username'";
+                $query = mysqli_query($conn, $sel);
+                $result = mysqli_fetch_assoc($query);
+                $UsernameFromDB = $result['Username'];
+                
+                mysqli_close($conn);
+                ?>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li><a class="dropdown-item" href="#">Welcome <?php echo $UsernameFromDB; ?></a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="project.PHP"> Logout</a></li>
+                </ul>
+            </div>
+            </div>
+            </div>
+    <div class="home">
+        <div class="navbar">
+            <img src="logo.png" class="logo">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="aimg.php">Image</a></li>
+                <li><a href="photog.php">Photographer</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+  <div class="profile-header">
+  <div class="profile-info">
+      <h1>Info :</h1>
+    </div>
+  <div class="about">
+     <form action="ig.php" method="POST" enctype="multipart/form-data" onsubmit="return validateFile();">
+        Name :<input type="text" name="name"><br><br>
+        Email :<input type="text" name="email"><br><br>
+        Contact :<input type="number" name="contact"><br><br>
+        Rate:<input type="number" name="rate"><br><br>
+        Image To Upload:<input type="file" name="image">
+        <input type="submit" name="submit" value="Upload">
+        </form>
+    </div>
+    <div class="profile-picture">
+    <form action="prof.php" method="POST" enctype="multipart/form-data" onsubmit="return validate();">
+                Add Profile Picture: <input type="file" name="profilepic" id="profilepic">
+                <input type="submit" name="submit-profilepic" value="Upload">
+            </form>
+    </div>
+      
+    
+   
+  </div>
+  
+  <div class="post-grid">
+  <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "project";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT name,email,contact,image_data FROM Image";
+    $result = mysqli_query($conn, $sql);
+    $images = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_close($conn);
+?>
+    <?php foreach ($images as $image): ?>
+      <?php $base64Image = base64_encode($image['image_data']); ?>
+      <img src="data:image/jpg;base64,<?= $base64Image ?>" alt="<?= $image['name'] ?>">
+  <?php endforeach; ?></div>
+<div class="profilepic">
+  <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "project";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql1 = "SELECT name, type, data FROM ProfilePictures";
+    $result1 = mysqli_query($conn, $sql1);
+    $profilePictures = mysqli_fetch_all($result1, MYSQLI_ASSOC);
+    
+
+    mysqli_close($conn);
+?>
+  <?php foreach ($profilePictures as $picture): ?>
+        <?php $base64Image = base64_encode($picture['data']); ?>
+        <img src="data:<?= $picture['type'] ?>;base64,<?= $base64Image ?>" alt="<?= $picture['name'] ?>">
+    <?php endforeach; ?>
+    </div>
+    <script>
+              document.addEventListener("DOMContentLoaded", function() {
+    var dropdownToggle = document.getElementById("dropdownMenuButton");
+    var dropdownMenu = document.querySelector(".dropdown-menu");
+
+    dropdownToggle.addEventListener("click", function() {
+        dropdownMenu.classList.toggle("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove("show");
+        }
+    });
+});
+    </script>
+</body>
+</html>

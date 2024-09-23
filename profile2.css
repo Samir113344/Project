@@ -1,0 +1,200 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: burlywood;
+  margin: 0;
+  padding: 0;
+}
+
+.profileheader {
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+
+.profile-picture img {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.profile-info {
+margin-right: 20px;
+}
+.profile-info h1 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.profile-info p {
+  font-size: 14px;
+  color: #888;
+}
+
+.profilepic {
+display: flex;
+flex-direction: column;
+align-items: flex-end; 
+margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.profilepic img {
+width: 250px;
+height: 250px;
+object-fit: cover;
+margin-top: -1000px;
+margin-right:200px;
+}
+
+.post-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.post-grid img {
+  width: 30%;
+  height: auto;
+  margin: 10px;
+}
+
+.view {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.menu {
+  text-align: right;
+}
+
+.menu h3 {
+  margin-bottom: 10px;
+}
+
+.menu ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.menu li img {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #000;
+}
+
+.menu li a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  width: 80%;
+  margin: auto;
+  padding: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  mix-blend-mode: multiply;
+  width: 120px;
+  cursor: pointer;
+}
+
+.navbar ul li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+}
+
+.navbar ul li a {
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+}
+
+.navbar ul li:after {
+  content: '';
+  height: 5px;
+  width: 0px;
+  background: red;
+  position: absolute;
+  left: 0px;
+  bottom: -10px;
+  transition: 0.5s;
+}
+
+.navbar ul li:hover:after {
+  width: 100%;
+}
+
+.h {
+  width: 100%;
+  position: absolute;
+  transform: translateY(-50);
+  text-align: center;
+  color: red;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  margin-left: -49px;
+  list-style: none;
+  background-color: white;
+  margin-top: 6px;
+  padding: 0.5rem 0;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #212529;
+  text-decoration: none;
+  display: block;
+  clear: both;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: inherit;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+
+.dropdown-item:hover {
+  background-color: red;
+}
+
+.view {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.profile {
+  text-align: right;
+  margin-bottom: 20px;
+}
