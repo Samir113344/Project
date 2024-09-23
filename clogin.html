@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LOGIN</title>
+	<link rel="stylesheet" href="log.css">
+</head>
+<body>
+	<div class="blue">
+ <?php
+$erremail=$errpass="";
+    if(isset($_POST['Login'])){
+        $email=$_POST['email'];
+        $password=$_POST['password'];
+		// if(empty($email) || !filter_var($email,FILTER_VALIDATE_EMAIL)){
+        //     $erremail="Enter valid email";
+        // }
+        // else{
+        //     echo "$email";
+        // }
+        // if(empty($password) || strlen($password)<=8){
+        //     $errpass= "Password must be greater than 8 character";
+        // }
+        // else{
+        //     echo"$password";
+        // }
+        $servername="localhost";
+        $username1="root";
+        $password1="";
+        $dbname = 'project';
+        $conn=mysqli_connect($servername,$username1,$password1,$dbname);
+        if (!$conn) {
+            die("Connection failed: ".mysqli_connect_error());
+        }
+        else{
+            // echo"Connected<br>";
+        }
+        $sql= "SELECT * FROM PG WHERE email = '$email' AND password = '$password' ";
+		$res = mysqli_query ($conn, $sql);
+		$Numrows = mysqli_num_rows($res);
+		if ($Numrows == 1){
+		$_SESSION[' email '] = $email;
+		header('Location: alogin.php');
+        echo"log in successful";
+		}else{
+			echo "log in failed ";
+		}
+
+     }
+?> 
+     <form action="" method="post">
+     	<h2>LOGIN</h2>
+     	<?php if (isset($_POST['error'])) { ?>
+     		<p class="error"><?php echo $_POST['error']; ?></p>
+     	<?php } ?>
+     	<label>Email</label>
+     	<input type="text" name="email" placeholder="Email"><br>
+
+     	<label>Password</label>
+     	<input type="password" name="password" placeholder="Password"><br>
+
+        <select>
+            <option value="">Photographer</option>
+            <option value="">User</option>
+        </select>
+
+
+     	<input type="submit" name="Login">
+     </form>
+		</div>
+</body>
+</html>
