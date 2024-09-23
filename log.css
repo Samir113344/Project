@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #dbd4bf;
+}
+
+.blue {
+  background-color: burlywood;
+  color:white;
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.blue h2 {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.blue label {
+  display: block;
+  text-align: left;
+  margin: 10px 0;
+  color: white;
+}
+
+.blue input[type="text"],
+.blue input[type="password"],
+.blue select {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.blue input[type="submit"] {
+  background-color: green;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}

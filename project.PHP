@@ -1,0 +1,25 @@
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="home">
+        <div class="navbar">
+            <img src="logo.png" class="logo">
+            <ul>
+                <li><a href="project.php" >Home</a></li>
+                <li><a href="About.php">About</a></li>
+                <li><a href="img.php">Image</a></li>
+                <li><a href="./clogin.php">Login</a></li>
+                <li><a href="./PSignup.php">SignUP</a></li>
+            </ul>
+        </div>
+        <div class="h">
+            <h1>WELCOME TO </h1>
+            <h2>PHOTOGRAPHY</h2>
+        </div>
+    </div>
+</body>
